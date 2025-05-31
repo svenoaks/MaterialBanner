@@ -7,32 +7,37 @@ def versionNameSuffix = "-debug"
 
 android {
     namespace 'com.sergivonavi.materialbanner'
-    compileSdk setup.compileSdk
+    compileSdk 35
 
     defaultConfig {
-        minSdk setup.minSdk
-        targetSdk setup.targetSdk
+        minSdk 25
+        targetSdk 34
 
-        resValue("string", "materialbanner_lib_version", "${project.release.versionName}${versionNameSuffix}")
+        resValue("string", "materialbanner_lib_version", "2.0.0${versionNameSuffix}")
     }
     buildTypes {
         release {
             minifyEnabled = false
             consumerProguardFiles("proguard-rules.pro")
 
-            resValue("string", "materialbanner_lib_version", "${project.release.versionName}")
+            resValue("string", "materialbanner_lib_version", "2.0.0")
         }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}")
-    implementation("androidx.core:core:${versions.androidX_core}")
-    implementation("com.google.android.material:material:${versions.material}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.22")
+    implementation("androidx.core:core:1.13.1")
+    implementation("com.google.android.material:material:1.10.0")
 }
+
 
 //apply from: '../gradle-release.gradle'
